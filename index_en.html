@@ -161,3 +161,149 @@
         footer {
             background-color: var(--navy-blue);
             color: var(--text-light);
+            padding: 40px 10%;
+            text-align: center;
+        }
+
+        footer h2 {
+            color: var(--text-light);
+        }
+
+        footer a {
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            margin-top: 20px;
+            line-height: 2;
+        }
+
+        /* Responsivt design til mobil */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            header { flex-direction: column; text-align: center; }
+            header img { margin-right: 0; margin-bottom: 10px; }
+            .lang-switch { margin-left: 0; margin-top: 15px; }
+            section { padding: 40px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="True Control Logo" onerror="this.style.display='none'">
+        <div class="company-name">True Control</div>
+        
+        <div class="lang-switch">
+            <a href="index.html" class="lang-dk">DK</a>
+            <span class="lang-divider">|</span>
+            <a href="index_en.html" class="lang-en">EN</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="content-wrapper">
+            <h1>Bridge the gap between the shop floor and the top floor</h1>
+            <p>Secure and agile SCADA and MES programming by a software specialist who understands the underlying hardware. Partner with an independent system architect who builds digital solutions for the physical world.</p>
+            <a href="#contact" class="btn">Book a no-obligation consultation</a>
+        </div>
+    </section>
+
+    <section id="about-me">
+        <div class="content-wrapper">
+            <h2>About me</h2>
+            <p><strong>Software developer with a deep understanding of electrical engineering.</strong><br>
+            With 10 years of experience in programming and developing AVEVA SCADA and MES, I specialize in building the software that connects the factory floor to the business.</p>
+
+            <h3>A strong software architecture requires understanding the foundation</h3>
+            <p>My technical journey started as an electrician before I studied electronic engineering and eventually fully dedicated myself to software development. This means I don't just write code based on a specification – I truly understand the signals and data I work with. I know what happens inside the PLC, and I know exactly how raw data is best translated into a robust, scalable top-level software architecture.</p>
+
+            <h3>Expert in machine integration, OEE, and PackML</h3>
+            <p>My great passion lies in coding intelligent machine integration. I have developed solutions for numerous companies to create transparency through precise OEE measurements. Additionally, I have extensive experience in programming and standardizing machine interfaces using PackML, making your future integrations significantly easier to handle in software.</p>
+
+            <h3>Security and structure from the Pharma industry</h3>
+            <p>I have worked for years developing for the pharmaceutical industry. This means that uncompromising quality, traceability, and stable uptime are integrated into my code. I am used to developing in environments where failure is not an option and where software must be verifiable (GAMP) from day one.</p>
+
+            <h3>Why choose True Control?</h3>
+            <p>You get a dedicated programmer and architect who understands the physical reality in which the code must operate. I build logic, databases, and user interfaces that create value for management and that your operators will actually enjoy using every day.</p>
+        </div>
+    </section>
+
+    <section id="services" class="bg-light">
+        <div class="content-wrapper">
+            <h2>My Services</h2>
+            <p>From raw machine data to business value. As an independent software specialist, I assist with the following core areas:</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>AVEVA SCADA & MES</h3>
+                    <p>I design and code robust AVEVA solutions. From underlying databases, scripts, and architectural choices to user-friendly HMI screens. I build software that performs stably and is easy to maintain and expand.</p>
+                </div>
+                <div class="service-card">
+                    <h3>OEE & Data Integration</h3>
+                    <p>I develop the software that extracts and processes the right data from your PLCs (regardless of brand) and translates it into intelligent OEE dashboards. Management gets the factual data presented clearly and flawlessly.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Standardization with PackML</h3>
+                    <p>I code and implement the ISA-88 / PackML standard in your upper-level systems. This ensures uniform data structures in your software, regardless of who delivered the physical machine.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Pharma & GAMP Validation</h3>
+                    <p>I deliver code prepared for GAMP validation from day one. This includes setting up audit trails, versioning, data security, and the necessary structural documentation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="method">
+        <div class="content-wrapper">
+            <h2>How I work</h2>
+            <p>To ensure the code delivers exactly what the business needs, I use a proven 5-step project model – whether we are expanding an existing SCADA system or building a new MES solution from scratch:</p>
+
+            <ul class="method-list">
+                <li>
+                    <h3>1. Pre-analysis & Requirement Specification</h3>
+                    <p>I never start programming before the architecture is in place. We clarify your data needs, and you receive a clear, written task description and a price estimate.</p>
+                </li>
+                <li>
+                    <h3>2. Technical Clarification & Proof of Concept</h3>
+                    <p>Before I build the full solution, I ensure the data communication works. Can we read the correct tags from the PLC? I test the critical integrations early to eliminate technical risk.</p>
+                </li>
+                <li>
+                    <h3>3. Agile Development & Iteration</h3>
+                    <p>Once the direction is set, I begin the actual programming. I work agilely, showing you HMI screens and dashboards continuously, allowing us to quickly adjust the user interface based on operator feedback.</p>
+                </li>
+                <li>
+                    <h3>4. Testing & Secure Commissioning (FAT/SAT)</h3>
+                    <p>New software must never cause unintended downtime. I always test the system thoroughly in an isolated environment (FAT) and am present during commissioning (SAT) to ensure a smooth transition to operation.</p>
+                </li>
+                <li>
+                    <h3>5. Follow-up & Value Realization</h3>
+                    <p>My work doesn't end the second the code goes live. After a short period, we evaluate together to ensure the software performs optimally, and that the system creates the expected value.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="content-wrapper">
+            <h2>Let's optimize your production</h2>
+            <p>Are you facing a complex machine integration, or does your SCADA system need an upgrade?<br>Let's have a no-obligation chat about system architecture and possibilities.</p>
+            
+            <div class="contact-info">
+                <strong>Phone:</strong> <a href="tel:+4500000000">+45 00 00 00 00</a><br>
+                <strong>Email:</strong> <a href="mailto:kontakt@truecontrol.dk">kontakt@truecontrol.dk</a><br>
+                <strong>LinkedIn:</strong> <a href="#" target="_blank">My LinkedIn Profile</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
