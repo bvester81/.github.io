@@ -11,7 +11,8 @@
             --light-bg: #f8f9fa;
             --text-dark: #333333;
             --text-light: #ffffff;
-            --accent-blue: #205081;
+            --accent-blue: #60a5fa;
+            --accent-dark: #205081;
         }
 
         body {
@@ -21,6 +22,7 @@
             padding: 0;
             color: var(--text-dark);
             background-color: #ffffff;
+            overflow-x: hidden; /* Forhindrer scroll når menuen er ude */
         }
 
         h1, h2, h3 {
@@ -28,185 +30,209 @@
             margin-bottom: 15px;
         }
 
-        /* Header med logo, firmanavn og sprogvælger */
+        /* --- HEADER & NAVIGATION --- */
         header {
             display: flex;
             align-items: center;
-            padding: 20px 10%;
+            justify-content: space-between; /* Skubber logo til venstre, menu til højre */
+            padding: 15px 5%;
             background-color: var(--text-light);
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 1000;
         }
 
-        header img {
-            height: 50px;
-            margin-right: 20px;
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
-        header .company-name {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--navy-blue);
-            letter-spacing: 1px;
-        }
+        /* Sprogvælger (Genbruger de samme klasser, men byttet om i HTML for at gøre EN blå) */
+        .lang-switch a { text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+        .lang-dk { color: var(--accent-blue); } /* Aktiv farve */
+        .lang-divider { color: #ccc; margin: 0 5px; }
+        .lang-en { color: var(--navy-blue); transition: color 0.3s; } /* Inaktiv farve */
+        .lang-en:hover { color: var(--accent-blue); }
 
-        /* Sprogvælger */
-        .lang-switch {
-            margin-left: auto;
-            font-size: 1.1rem;
-        }
-
-        .lang-switch a {
-            text-decoration: none;
-            font-weight: bold;
+        /* Hamburgermenu Ikon */
+        .hamburger {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 5px;
+            z-index: 1001;
         }
         
-        /* På den engelske side er EN lyseblå og DK er mørk */
-        .lang-dk { color: #0f2027; margin-right: 10px; transition: color 0.3s; }
-        .lang-dk:hover { color: #60a5fa; }
-        .lang-divider { color: #ccc; }
-        .lang-en { color: #60a5fa; margin-left: 10px; }
-
-        /* Navy blå Hero-boks */
-        .hero {
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 3px;
             background-color: var(--navy-blue);
+            border-radius: 3px;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Hamburgermenu Animation til 'X' */
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background-color: var(--text-light); 
+        }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background-color: var(--text-light);
+        }
+
+        /* Selve Slide-in Menuen */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -350px; 
+            width: 300px;
+            height: 100vh;
+            background-color: var(--navy-blue);
+            padding-top: 80px;
+            transition: 0.4s ease-in-out;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 999;
+            overflow-y: auto;
+        }
+
+        .side-menu.active { right: 0; }
+
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-list li { border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
             color: var(--text-light);
-            padding: 60px 10%;
-            text-align: center;
-        }
-
-        .hero h1 {
-            color: var(--text-light);
-            font-size: 2.5rem;
-            margin-top: 0;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 30px auto;
-            color: #d1d5db;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #ffffff;
-            color: var(--navy-blue);
-            padding: 12px 25px;
             text-decoration: none;
+            font-size: 1.2rem;
             font-weight: bold;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
+            transition: 0.3s;
+            cursor: pointer;
         }
 
-        .btn:hover {
-            background-color: #e2e8f0;
+        .menu-item:hover, .menu-item.open { background-color: rgba(255,255,255,0.05); color: var(--accent-blue); }
+
+        /* Undermenu (AI Optimering) */
+        .sub-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: #0a151a; 
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
         }
 
-        /* Sektioner generelt */
-        section {
-            padding: 60px 10%;
+        .sub-menu li { border-bottom: none; }
+        .sub-menu a {
+            display: block;
+            padding: 15px 30px 15px 50px;
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: 0.3s;
         }
+        .sub-menu a:hover { color: var(--accent-blue); }
 
-        section.bg-light {
-            background-color: var(--light-bg);
+        /* Mørkt overlay over resten af siden når menu er åben */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 998;
         }
+        .overlay.active { opacity: 1; visibility: visible; }
 
-        .content-wrapper {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+        /* --- HERO & Sektioner --- */
+        .hero { background-color: var(--navy-blue); color: var(--text-light); padding: 60px 10%; text-align: center; }
+        .hero h1 { color: var(--text-light); font-size: 2.5rem; margin-top: 0; }
+        .hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px auto; color: #d1d5db; }
+        
+        .btn { display: inline-block; background-color: #ffffff; color: var(--navy-blue); padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: 0.3s; }
+        .btn:hover { background-color: #e2e8f0; }
+
+        section { padding: 60px 10%; }
+        section.bg-light { background-color: var(--light-bg); }
+        .content-wrapper { max-width: 900px; margin: 0 auto; }
 
         /* Mine Ydelser Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .service-card {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--accent-blue);
-        }
-
-        .service-card h3 {
-            font-size: 1.2rem;
-            color: var(--accent-blue);
-        }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
+        .service-card { background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid var(--accent-dark); }
+        .service-card h3 { font-size: 1.2rem; color: var(--accent-dark); }
 
         /* Arbejdsmetode liste */
-        .method-list {
-            list-style-type: none;
-            padding: 0;
-        }
+        .method-list { list-style-type: none; padding: 0; }
+        .method-list li { background: #ffffff; margin-bottom: 20px; padding: 20px; border-left: 5px solid var(--accent-dark); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .method-list h3 { margin-top: 0; color: var(--accent-dark); font-size: 1.2rem; }
 
-        .method-list li {
-            background: #ffffff;
-            margin-bottom: 20px;
-            padding: 20px;
-            border-left: 5px solid var(--accent-blue);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .method-list h3 {
-            margin-top: 0;
-            color: var(--accent-blue);
-            font-size: 1.2rem;
-        }
-
-        /* Footer / Kontakt */
-        footer {
-            background-color: var(--navy-blue);
-            color: var(--text-light);
-            padding: 40px 10%;
-            text-align: center;
-        }
-
-        footer h2 {
-            color: var(--text-light);
-        }
-
-        footer a {
-            color: #60a5fa;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .contact-info {
-            font-size: 1.1rem;
-            margin-top: 20px;
-            line-height: 2;
-        }
-
-        /* Responsivt design til mobil */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            header { flex-direction: column; text-align: center; }
-            header img { margin-right: 0; margin-bottom: 10px; }
-            .lang-switch { margin-left: 0; margin-top: 15px; }
-            section { padding: 40px 5%; }
-        }
+        footer { background-color: var(--navy-blue); color: var(--text-light); padding: 40px 10%; text-align: center; }
+        footer h2 { color: var(--text-light); }
+        footer a { color: var(--accent-blue); text-decoration: none; font-weight: bold; }
+        footer a:hover { text-decoration: underline; }
+        .contact-info { font-size: 1.1rem; margin-top: 20px; line-height: 2; }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="logo.svg" alt="True Control Logo" onerror="this.style.display='none'">
-        <div class="company-name">True Control</div>
+        <a href="index_en.html" style="text-decoration: none; display: flex; align-items: center;">
+            <img src="logo.svg" alt="True Control Logo" style="height: 60px;" onerror="this.style.display='none'">
+        </a>
         
-        <div class="lang-switch">
-            <a href="index.html" class="lang-dk">DK</a>
-            <span class="lang-divider">|</span>
-            <a href="index_en.html" class="lang-en">EN</a>
+        <div class="header-right">
+            <div class="lang-switch">
+                <a href="index.html" class="lang-en">DK</a>
+                <span class="lang-divider">|</span>
+                <a href="index_en.html" class="lang-dk">EN</a>
+            </div>
+            
+            <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
+
+    <nav class="side-menu" id="sideMenu">
+        <ul class="menu-list">
+            <li>
+                <div class="menu-item" id="expertiseToggle">
+                    Expertise <span class="arrow">▼</span>
+                </div>
+                <ul class="sub-menu" id="expertiseSub">
+                    <li><a href="#ai-optimering" class="nav-link">AI-driven optimization</a></li>
+                </ul>
+            </li>
+            <li><a href="#about-me" class="menu-item nav-link">About me</a></li>
+            <li><a href="#services" class="menu-item nav-link">My Services</a></li>
+            <li><a href="#method" class="menu-item nav-link">How I work</a></li>
+            <li><a href="#contact" class="menu-item nav-link">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="overlay" id="overlay"></div>
 
     <section class="hero">
         <div class="content-wrapper">
@@ -230,9 +256,6 @@
 
             <h3>Security and structure from the Pharma industry</h3>
             <p>I have worked for years developing for the pharmaceutical industry. This means that uncompromising quality, traceability, and stable uptime are integrated into my code. I am used to developing in environments where failure is not an option and where software must be verifiable (GAMP) from day one.</p>
-
-            <h3>Why choose True Control?</h3>
-            <p>You get a dedicated programmer and architect who understands the physical reality in which the code must operate. I build logic, databases, and user interfaces that create value for management and that your operators will actually enjoy using every day.</p>
         </div>
     </section>
 
@@ -257,6 +280,10 @@
                 <div class="service-card">
                     <h3>Pharma & GAMP Validation</h3>
                     <p>I deliver code prepared for GAMP validation from day one. This includes setting up audit trails, versioning, data security, and the necessary structural documentation.</p>
+                </div>
+                <div class="service-card">
+                    <h3>System Architecture & Pre-analysis</h3>
+                    <p>Before you launch a major development project, I can perform a system analysis. I uncover technical pitfalls from the PLC layer up to the database and ERP system, delivering a clear requirement specification that minimizes your risk.</p>
                 </div>
             </div>
         </div>
@@ -305,5 +332,43 @@
         </div>
     </footer>
 
+    <script>
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const sideMenu = document.getElementById('sideMenu');
+        const overlay = document.getElementById('overlay');
+        const expertiseToggle = document.getElementById('expertiseToggle');
+        const expertiseSub = document.getElementById('expertiseSub');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Funktion til at åbne/lukke selve sidemenuen
+        function toggleMenu() {
+            hamburgerBtn.classList.toggle('active');
+            sideMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        hamburgerBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // Luk menuen når der klikkes på et almindeligt link
+        navLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+        // Håndtering af drop-down (Ekspertiser) i menuen
+        expertiseToggle.addEventListener('click', function() {
+            this.classList.toggle('open');
+            
+            // Tjekker om undermenuen er åben via maxHeight
+            if (expertiseSub.style.maxHeight) {
+                expertiseSub.style.maxHeight = null; // Lukker den
+                this.querySelector('.arrow').style.transform = 'rotate(0deg)';
+            } else {
+                expertiseSub.style.maxHeight = expertiseSub.scrollHeight + "px"; // Åbner den baseret på indholdets højde
+                this.querySelector('.arrow').style.transform = 'rotate(180deg)';
+                this.querySelector('.arrow').style.transition = '0.3s';
+            }
+        });
+    </script>
 </body>
 </html>
