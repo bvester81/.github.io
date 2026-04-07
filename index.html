@@ -23,16 +23,15 @@
             color: var(--text-dark);
             background-color: #ffffff;
             overflow-x: hidden; 
-            padding-top: 86px; /* NYT: Gør plads til den låste menu */
+            padding-top: 86px; /* Gør plads til den låste menu */
         }
-
 
         h1, h2, h3 {
             color: var(--navy-blue);
             margin-bottom: 15px;
         }
 
-                /* --- HEADER & NAVIGATION --- */
+        /* --- HEADER & NAVIGATION --- */
         header {
             display: flex;
             align-items: center;
@@ -48,11 +47,9 @@
             box-sizing: border-box;
             z-index: 1000;
             
-            /* NY LINJE TILFØJET HER: */
             transition: transform 0.3s ease-in-out; 
         }
 
-        /* NY BLOK TILFØJET LIGE UNDER HEADER: */
         header.hidden {
             transform: translateY(-100%);
         }
@@ -94,7 +91,7 @@
         /* Hamburgermenu Animation til 'X' */
         .hamburger.active span:nth-child(1) {
             transform: translateY(9px) rotate(45deg);
-            background-color: var(--text-light); /* Bliver hvid når den er over den mørke menu */
+            background-color: var(--text-light); 
         }
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) {
@@ -106,7 +103,7 @@
         .side-menu {
             position: fixed;
             top: 0;
-            right: -350px; /* Skjult uden for skærmen */
+            right: -350px; 
             width: 300px;
             height: 100vh;
             background-color: var(--navy-blue);
@@ -117,7 +114,7 @@
             overflow-y: auto;
         }
 
-        .side-menu.active { right: 0; /* Kører ind på skærmen */ }
+        .side-menu.active { right: 0; }
 
         .menu-list {
             list-style: none;
@@ -147,7 +144,7 @@
             list-style: none;
             padding: 0;
             margin: 0;
-            background-color: #0a151a; /* Lidt mørkere baggrund */
+            background-color: #0a151a; 
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease-out;
@@ -196,7 +193,7 @@
         .service-card { background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid var(--accent-dark); }
         .service-card h3 { font-size: 1.2rem; color: var(--accent-dark); }
 
-        /* Arbejdsmetode liste */
+        /* Arbejdsmetode liste (Skjult, da vi bruger den nye model, men beholdt i fald du bruger den andre steder) */
         .method-list { list-style-type: none; padding: 0; }
         .method-list li { background: #ffffff; margin-bottom: 20px; padding: 20px; border-left: 5px solid var(--accent-dark); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .method-list h3 { margin-top: 0; color: var(--accent-dark); font-size: 1.2rem; }
@@ -206,6 +203,50 @@
         footer a { color: var(--accent-blue); text-decoration: none; font-weight: bold; }
         footer a:hover { text-decoration: underline; }
         .contact-info { font-size: 1.1rem; margin-top: 20px; line-height: 2; }
+
+        /* --- NY PROJEKTMODEL CSS --- */
+        .project-model-container { max-width: 1200px; margin: 0 auto; text-align: center; position: relative; }
+        .model-title { color: var(--navy-blue); font-size: 2.2rem; margin-bottom: 40px; text-transform: uppercase; }
+        .model-title span { color: var(--accent-dark); }
+        
+        .steps-wrapper { display: flex; justify-content: space-between; align-items: flex-start; position: relative; gap: 15px; }
+        
+        .steps-wrapper::before {
+            content: ''; position: absolute; top: 40px; left: 5%; width: 90%; height: 4px;
+            background: linear-gradient(to right, #b0d4f1, var(--accent-dark)); z-index: 0;
+        }
+
+        .step-card {
+            flex: 1; background: #ffffff; padding: 20px 15px; border-radius: 10px; z-index: 1;
+            display: flex; flex-direction: column; align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-top: 4px solid transparent; transition: transform 0.3s;
+        }
+
+        .step-card:hover { transform: translateY(-5px); }
+
+        .step-icon {
+            width: 70px; height: 70px; background-color: var(--light-bg); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+            border: 2px solid #b0d4f1; font-size: 1.8rem; color: var(--accent-dark);
+        }
+
+        .step-card.highlight {
+            border: 2px solid var(--accent-dark); border-top: 6px solid var(--accent-dark);
+            box-shadow: 0 10px 20px rgba(32, 80, 129, 0.15); transform: scale(1.05); background: #ffffff;
+        }
+
+        .step-card.highlight:hover { transform: scale(1.05) translateY(-5px); }
+
+        .step-number { font-weight: bold; color: var(--accent-dark); font-size: 1rem; margin-bottom: 10px; text-transform: uppercase; min-height: 45px; }
+        .step-text { font-size: 0.9rem; color: var(--text-dark); margin-bottom: 15px; line-height: 1.4; }
+        .step-bottom { margin-top: auto; font-weight: bold; font-size: 0.85rem; color: var(--navy-blue); text-transform: uppercase; }
+
+        @media (max-width: 900px) {
+            .steps-wrapper { flex-direction: column; align-items: center; }
+            .steps-wrapper::before { display: none; }
+            .step-card { width: 90%; margin-bottom: 20px; }
+            .step-card.highlight { transform: scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -306,32 +347,45 @@
     </section>
 
     <section id="metode">
-        <div class="content-wrapper">
-            <h2>Sådan arbejder jeg</h2>
-            <p>For at sikre, at koden leverer præcis det, forretningen har brug for, bruger jeg en fast og gennemprøvet 5-trins projektmodel:</p>
+        <div class="project-model-container">
+            <h2 class="model-title">Vores Projektmodel:<br><span>Fra behov til gevinst.</span></h2>
+            
+            <div class="steps-wrapper">
+                <div class="step-card">
+                    <div class="step-icon">💡</div>
+                    <div class="step-number">1. Foranalyse &<br>Kravspecifikation</div>
+                    <div class="step-text">Afklaring af behov, skriftlig opgavebeskrivelse, prisestimat.</div>
+                    <div class="step-bottom">Før jeg koder</div>
+                </div>
 
-            <ul class="method-list">
-                <li>
-                    <h3>1. Foranalyse & Kravspecifikation (Før jeg koder)</h3>
-                    <p>Jeg starter aldrig med at programmere, før arkitekturen er på plads. Vi afklarer jeres databehov, og I får en klar, skriftlig opgavebeskrivelse og et prisestimat.</p>
-                </li>
-                <li>
-                    <h3>2. Teknisk afklaring & Proof of Concept</h3>
-                    <p>Inden jeg bygger den fulde løsning, sikrer jeg mig, at datakommunikationen fungerer. Kan vi læse de rigtige tags fra PLC'en? Jeg tester de kritiske integrationer tidligt for at fjerne teknisk risiko.</p>
-                </li>
-                <li>
-                    <h3>3. Agil Udvikling & Iteration</h3>
-                    <p>Når retningen er sat, går jeg i gang med selve programmeringen. Jeg arbejder agilt og viser jer HMI-skærme og dashboards løbende, så vi lynhurtigt kan tilrette brugerfladen efter operatørernes feedback.</p>
-                </li>
-                <li>
-                    <h3>4. Test & Sikker Idriftsættelse (FAT/SAT)</h3>
-                    <p>Ny software må aldrig skabe utilsigtet nedetid. Jeg tester altid systemet grundigt i et isoleret miljø (FAT), og er med under idriftsættelsen (SAT), så vi sikrer en gnidningsfri overgang til drift.</p>
-                </li>
-                <li>
-                    <h3>5. Opfølgning (Gevinstrealisering)</h3>
-                    <p>Mit arbejde slutter ikke det sekund, koden er lagt live. Efter lidt tid evaluerer vi sammen for at sikre, at softwaren performer optimalt, at dataene bruges rigtigt, og at systemet skaber den forventede værdi.</p>
-                </li>
-            </ul>
+                <div class="step-card">
+                    <div class="step-icon">⚙️</div>
+                    <div class="step-number">2. Teknisk Afklaring &<br>Proof of Concept</div>
+                    <div class="step-text">Sikrer datakommunikation, test af kritiske integrationer, fjerner teknisk risiko.</div>
+                    <div class="step-bottom">Læs rigtige tags fra PLC</div>
+                </div>
+
+                <div class="step-card highlight">
+                    <div class="step-icon">🔄</div>
+                    <div class="step-number">3. Agil Udvikling<br>& Iteration</div>
+                    <div class="step-text">Programmering ➔ HMI/Dashboards vist ➔ Operatør feedback ➔ Reprogrammering.</div>
+                    <div class="step-bottom" style="color: var(--accent-dark);">Løbende Tilretning</div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">🏭</div>
+                    <div class="step-number">4. Test & Sikker<br>Idriftsættelse</div>
+                    <div class="step-text">Grundig test i isoleret miljø (FAT), gnidningsfri overgang til drift (SAT).</div>
+                    <div class="step-bottom">Ingen utilsigtet nedetid</div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">📈</div>
+                    <div class="step-number">5. Opfølgning &<br>Gevinstrealisering</div>
+                    <div class="step-text">Evaluering af performance, dataanvendelse, sikrer forventet værdi.</div>
+                    <div class="step-bottom">Koden er lagt live, men fortsætter</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -370,7 +424,7 @@
             link.addEventListener('click', toggleMenu);
         });
 
-                // Håndtering af drop-down (Ekspertiser) i menuen
+        // Håndtering af drop-down (Ekspertiser) i menuen
         expertiseToggle.addEventListener('click', function() {
             this.classList.toggle('open');
             
@@ -385,7 +439,7 @@
             }
         });
 
-        // --- NY KODE TIL AT GEMME/VISE HEADER PÅ SCROLL TILFØJES HER: ---
+        // --- KODE TIL AT GEMME/VISE HEADER PÅ SCROLL ---
         let lastScrollTop = 0;
         const mainHeader = document.querySelector('header');
 
