@@ -32,24 +32,30 @@
             margin-bottom: 15px;
         }
 
-        /* --- HEADER & NAVIGATION --- */
+                /* --- HEADER & NAVIGATION --- */
         header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 15px 5%;
-            background-color: rgba(255, 255, 255, 0.98); /* Gør den hvid, men liiiige præcis gennemsigtig nok til at man fornemmer teksten bagved */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Lidt kraftigere skygge når man scroller */
+            background-color: rgba(255, 255, 255, 0.98); 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
             
-            /* NY KODE DER LÅSER MENUEN: */
             position: fixed; 
             top: 0;
             left: 0;
             width: 100%;
             box-sizing: border-box;
             z-index: 1000;
+            
+            /* NY LINJE TILFØJET HER: */
+            transition: transform 0.3s ease-in-out; 
         }
 
+        /* NY BLOK TILFØJET LIGE UNDER HEADER: */
+        header.hidden {
+            transform: translateY(-100%);
+        }
 
         .header-right {
             display: flex;
@@ -364,7 +370,7 @@
             link.addEventListener('click', toggleMenu);
         });
 
-        // Håndtering af drop-down (Ekspertiser) i menuen
+                // Håndtering af drop-down (Ekspertiser) i menuen
         expertiseToggle.addEventListener('click', function() {
             this.classList.toggle('open');
             
@@ -377,6 +383,25 @@
                 this.querySelector('.arrow').style.transform = 'rotate(180deg)';
                 this.querySelector('.arrow').style.transition = '0.3s';
             }
+        });
+
+        // --- NY KODE TIL AT GEMME/VISE HEADER PÅ SCROLL TILFØJES HER: ---
+        let lastScrollTop = 0;
+        const mainHeader = document.querySelector('header');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // Skjuler headeren hvis vi scroller ned og er mere end 100px fra toppen
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                mainHeader.classList.add('hidden');
+            } 
+            // Viser headeren igen hvis vi scroller op
+            else {
+                mainHeader.classList.remove('hidden');
+            }
+            
+            lastScrollTop = scrollTop;
         });
     </script>
 </body>
