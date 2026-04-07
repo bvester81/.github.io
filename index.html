@@ -60,6 +60,25 @@
             gap: 20px;
         }
 
+        /* --- NY KODE TIL HEADER SLOGAN --- */
+        .header-slogan {
+            font-size: 0.95rem;
+            color: var(--accent-dark);
+            font-weight: bold;
+            margin-left: 15px;
+            padding-left: 15px;
+            border-left: 2px solid var(--accent-blue); /* Fin lodret streg mellem logo og slogan */
+            white-space: nowrap; /* Sikrer at teksten ikke knækker på to linjer */
+        }
+
+        /* Skjul sloganet på mobiler og små tablets, så der er plads til menuen */
+        @media (max-width: 900px) {
+            .header-slogan {
+                display: none;
+            }
+        }
+
+
         /* Sprogvælger */
         .lang-switch a { text-decoration: none; font-weight: bold; font-size: 1.1rem; }
         .lang-dk { color: var(--accent-blue); }
@@ -254,6 +273,7 @@
     <header>
         <a href="index.html" style="text-decoration: none; display: flex; align-items: center;">
             <img src="logo.svg" alt="True Control Logo" style="height: 60px;" onerror="this.style.display='none'">
+            <span class="header-slogan">True Control: Smart systems. Simple operations.</span>
         </a>
         
         <div class="header-right">
@@ -270,6 +290,7 @@
             </button>
         </div>
     </header>
+
 
     <nav class="side-menu" id="sideMenu">
         <ul class="menu-list">
