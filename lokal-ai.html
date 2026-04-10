@@ -4,114 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>True Control | Lokalt AI Review af Rapporter</title>
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header>
-        <a href="index.html" style="text-decoration: none; display: flex; align-items: center;">
-            <img src="logo.svg" alt="True Control Logo" style="height: 60px;" onerror="this.style.display='none'">
-        </a>
-        
-        <div class="header-right">
-            <div class="lang-switch">
-                <a href="lokal-ai.html" class="lang-dk">DK</a>
-                <span class="lang-divider">|</span>
-                <a href="#" class="lang-en">EN</a> 
-            </div>
-            
-            <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
-
-    <nav class="side-menu" id="sideMenu">
-        <ul class="menu-list">
-            <li><a href="index.html" class="menu-item nav-link">Gå til Forsiden</a></li>
-            <li>
-                <div class="menu-item open" id="expertiseToggle">
-                    Ekspertiser <span class="arrow" style="transform: rotate(180deg);">▼</span>
-                </div>
-                <ul class="sub-menu" id="expertiseSub" style="max-height: 200px;">
-                    <li><a href="lokal-ai.html" class="nav-link" style="color: var(--accent-blue);">AI review af håndskrift</a></li>
-                </ul>
-            </li>
-            <li><a href="index.html#kontakt" class="menu-item nav-link">Kontakt</a></li>
-        </ul>
-    </nav>
-    <div class="overlay" id="overlay"></div>
 
     <section class="hero">
         <div class="content-wrapper">
             <h1 style="color: var(--accent-blue); font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Edge AI & LLM</h1>
             <h1>Automatiseret review af håndskrevne rapporter – 100% lokalt</h1>
-            <p>Få kraften fra store sprogmodeller (LLM) ud på fabriksgulvet uden at kompromittere datasikkerheden. Jeg bygger on-premise AI-løsninger på små, kraftfulde industri-pc'er, der automatisk læser og validerer håndskrevne logbøger og batch-rapporter.</p>
+            <p>Få kraften fra store sprogmodeller (LLM) ud på fabriksgulvet uden at kompromittere datasikkerheden...</p>
             <a href="index.html#kontakt" class="btn">Skal vi drøfte mulighederne?</a>
-        </div>
-    </section>
-
-    <section>
-        <div class="content-wrapper">
-            <h2>Det manuelle review er en flaskehals</h2>
-            <p>I mange produktions- og pharmavirksomheder foregår logning og udfyldelse af batch records stadig delvist på papir. Det kræver enormt meget tid at gennemgå disse håndskrevne rapporter manuelt for manglende signaturer, ulæselige tal eller afvigelser – og risikoen for menneskelige fejl er stor.</p>
-            
-            <p>Offentlige AI-værktøjer som ChatGPT er eminente til at læse og forstå skæv håndskrift, men <strong>industrielle produktionsdata må aldrig sendes ud i en public cloud.</strong></p>
-
-            <h3 style="margin-top: 40px; color: var(--accent-dark);">Løsningen: En sprogmodel direkte på maskinen</h3>
-            <p>Ved at placere en lille, specialkonfigureret industri-PC (Edge-computer) direkte ude på produktionslinjen, kan vi køre en tilpasset, lokal sprogmodel (Local LLM). Computeren scanner papiret, forstår teksten via AI, og sender de strukturerede data direkte ind i jeres lokale SCADA- eller MES-system.</p>
-        </div>
-    </section>
-
-    <section class="bg-light">
-        <div class="content-wrapper">
-            <h2>Fordelene ved Edge AI & Lokale LLM'er</h2>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>100% Datasikkerhed (Air-gapped)</h3>
-                    <p>Løsningen kræver ingen internetforbindelse. Modellen kører udelukkende på den lokale hardware, hvilket betyder, at jeres data aldrig forlader bygningens fire vægge. Det er essentielt for IP-beskyttelse og validering.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Forstår rodet håndskrift</h3>
-                    <p>I modsætning til traditionel OCR-software, der blot forsøger at genkende bogstaver, forstår en LLM <em>konteksten</em>. Den kan regne ud, hvad operatøren har skrevet, selvom håndskriften er utydelig, fordi den kender de forventede fagtermer.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Automatisk afvigelses-tjek</h3>
-                    <p>Modellen oversætter ikke bare teksten; den kan prompte til at vurdere den. Den kan automatisk markere et felt med rød, hvis en operatør har skrevet en værdi, der falder uden for den tilladte tolerance, eller hvis en signatur mangler.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Direkte SCADA/MES integration</h3>
-                    <p>Fordi jeg både forstår AI-modellerne og PLC/SCADA-arkitekturen, sørger jeg for, at outputtet fra pc'en bliver oversat til standardiserede data, som let kan læses af jeres eksisterende databaser og dashboards.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="content-wrapper">
-            <h2>Sådan fungerer processen i praksis</h2>
-            <ul class="method-list">
-                <li>
-                    <h3>1. Scanning & Billedregistrering</h3>
-                    <p>Operatøren placerer den håndskrevne rapport under et industri-kamera eller en scanner ved linjen. Billedet fanges lokalt af Edge-pc'en.</p>
-                </li>
-                <li>
-                    <h3>2. AI Processing (Local LLM)</h3>
-                    <p>Den lokalt hostede AI-model analyserer billedet på få sekunder. Den trækker teksten ud, læser værdierne og overholder præcis den struktur (f.eks. JSON), vi har bedt den om via bagvedliggende system-prompts.</p>
-                </li>
-                <li>
-                    <h3>3. Validering via HMI-skærm</h3>
-                    <p>Resultatet vises på operatørens SCADA/HMI-skærm. Hvis AI'en er i tvivl om et specifikt tal, fremhæves det, så operatøren blot skal godkende eller rette det specifikke felt, før det gemmes.</p>
-                </li>
-                <li>
-                    <h3>4. Sikker lagring i MES</h3>
-                    <p>Når dataene er godkendt, skrives de direkte ned i jeres lokale database med fuldt Audit Trail og tidsstempel.</p>
-                </li>
-            </ul>
         </div>
     </section>
 
@@ -127,33 +29,6 @@
         </div>
     </footer>
 
-    <script>
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const sideMenu = document.getElementById('sideMenu');
-        const overlay = document.getElementById('overlay');
-        const expertiseToggle = document.getElementById('expertiseToggle');
-        const expertiseSub = document.getElementById('expertiseSub');
-
-        function toggleMenu() {
-            hamburgerBtn.classList.toggle('active');
-            sideMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-
-        hamburgerBtn.addEventListener('click', toggleMenu);
-        overlay.addEventListener('click', toggleMenu);
-
-        expertiseToggle.addEventListener('click', function() {
-            this.classList.toggle('open');
-            if (expertiseSub.style.maxHeight) {
-                expertiseSub.style.maxHeight = null;
-                this.querySelector('.arrow').style.transform = 'rotate(0deg)';
-            } else {
-                expertiseSub.style.maxHeight = expertiseSub.scrollHeight + "px";
-                this.querySelector('.arrow').style.transform = 'rotate(180deg)';
-                this.querySelector('.arrow').style.transition = '0.3s';
-            }
-        });
-    </script>
+    <script src="menu.js"></script>
 </body>
 </html>
