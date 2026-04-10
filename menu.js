@@ -35,7 +35,7 @@ const headerHTML = `
                     <li><a href="lokal-ai.html" class="nav-link">AI review af håndskrift</a></li>
                 </ul>
             </li>
-            
+            <li>
                 <div class="menu-item" id="downloadsToggle">
                     Downloads <span class="arrow">▼</span>
                 </div>
