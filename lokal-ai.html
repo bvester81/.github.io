@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>True Control | Lokalt AI Review af Rapporter</title>
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,15 +13,95 @@
         <div class="content-wrapper">
             <h1 style="color: var(--accent-blue); font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Edge AI & LLM</h1>
             <h1>Automatiseret review af håndskrevne rapporter – 100% lokalt</h1>
-            <p>Få kraften fra store sprogmodeller (LLM) ud på fabriksgulvet uden at kompromittere datasikkerheden...</p>
+            <p>Få kraften fra store sprogmodeller (LLM) ud på fabriksgulvet uden at kompromittere datasikkerheden. Jeg bygger on-premise AI-løsninger på små, kraftfulde industri-pc'er, der automatisk læser og validerer håndskrevne logbøger og batch-rapporter.</p>
             <a href="index.html#kontakt" class="btn">Skal vi drøfte mulighederne?</a>
+        </div>
+    </section>
+
+    <section>
+        <div class="content-wrapper">
+            <h2>Det manuelle review er en flaskehals</h2>
+            <p>I mange produktions- og pharmavirksomheder foregår logning og udfyldelse af batch records stadig delvist på papir. Det kræver enormt meget tid at gennemgå disse håndskrevne rapporter manuelt for manglende signaturer, ulæselige tal eller afvigelser – og risikoen for menneskelige fejl er stor.</p>
+            
+            <p>Offentlige AI-værktøjer som ChatGPT er eminente til at læse og forstå skæv håndskrift, men <strong>industrielle produktionsdata må aldrig sendes ud i en public cloud.</strong></p>
+
+            <h3 style="margin-top: 40px; color: var(--accent-dark);">Løsningen: En sprogmodel direkte på maskinen</h3>
+            <p>Ved at placere en lille, specialkonfigureret industri-PC (Edge-computer) direkte ude på produktionslinjen, kan vi køre en tilpasset, lokal sprogmodel (Local LLM). Computeren scanner papiret, forstår teksten via AI, og sender de strukturerede data direkte ind i jeres lokale SCADA- eller MES-system.</p>
+        </div>
+    </section>
+
+    <section class="bg-light">
+        <div class="content-wrapper">
+            <h2>Fordelene ved Edge AI & Lokale LLM'er</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>100% Datasikkerhed</h3>
+                    <p>Løsningen kører udelukkende på jeres egen hardware. Det betyder, at fortrolige produktionsdata aldrig forlader bygningens fire vægge eller deles med tredjepart. En absolut nødvendighed for IP-beskyttelse og compliance.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Robust og offline</h3>
+                    <p>Da systemet kører lokalt (Edge), er I ikke sårbare over for netværksudfald eller ustabile cloud-forbindelser. Produktionen – og jeres nye AI-assistent – kører ufortrødent videre, selv hvis internettet går ned.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Forstår rodet håndskrift</h3>
+                    <p>I modsætning til klassisk OCR-software, der blindt forsøger at genkende bogstaver, forstår en sprogmodel <em>konteksten</em>. Den gennemskuer udvisket eller skæv håndskrift, fordi den er trænet til at kende jeres processer og forventede fagtermer.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Automatisk afvigelses-tjek</h3>
+                    <p>AI'en digitaliserer ikke bare teksten – den tager stilling til den. Mangler der en nødvendig signatur, eller falder en operatørs indtastede værdi uden for tolerancen? Så fanger modellen det øjeblikkeligt og gør opmærksom på afvigelsen, præcis som det passer ind i jeres nuværende workflow.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Direkte SCADA/MES integration</h3>
+                    <p>Her bygger jeg broen. Fordi jeg forstår både AI-modellernes opbygning og den klassiske SCADA/MES-arkitektur, sørger jeg for, at AI'ens output oversættes til strukturerede data, som nemt kan læses, præsenteres eller gemmes i de systemer, I allerede benytter.</p>
+                </div>
+                
+                 <div class="service-card">
+                    <h3>Fuld kontrol & Pharma-validering</h3>
+                    <p>En lokal industri-PC udstyret med en specialiseret AI-processor løser snildt disse komplekse opgaver. Endnu vigtigere: Da modellen er jeres egen, sker der ingen pludselige cloud-opdateringer i baggrunden. Systemet leverer nøjagtig samme resultat i dag som i morgen, hvilket er forudsætningen for at kunne validere systemet (f.eks. GAMP) i pharma-industrien.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section>
+        <div class="content-wrapper">
+            <h2>Sådan fungerer processen i praksis</h2>
+            <ul class="method-list">
+                <li>
+                    <h3>1. Scanning & Billedregistrering</h3>
+                    <p>Operatøren placerer den håndskrevne rapport under et industri-kamera eller en scanner når linjen. Billedet fanges lokalt af Edge-pc'en.</p>
+                </li>
+                <li>
+                    <h3>2. AI Processing (Local LLM)</h3>
+                    <p>Den lokalt hostede AI-model analyserer billedet på få sekunder og sikre at dokumentet overholder præcis de krav som I har. 
+                        F.eks. er alle felter udfyldt, er der brugt det rigtige tidsformat, at det er læsbart osv. 
+                        Alternativt kan den bruges til at trække værdier ud og gemme dem i f.eks en lokal fil eller database. </p>
+                </li>
+                <li>
+                    <h3>3. Validering </h3>
+                    <p>Resultatet kan i første omgang vises lokalt ved Edge computeren, med et Godkent eller Ikke-Godkent for de enkelte rapporter 
+                        og kan også helt konkret fortælle brugeren, hvorfor rapporten evt. ikke er godkent. 
+                        Overbygningen på dette kunne være at, resultaten vises på operatøren SCADA station, supervisoren modtager en opsummeret rapport på mail, 
+                        eller QA kan se kvalitets data i et SPC chart og hurtigt reagere på faldende kvalitet. </p>
+                </li>
+                <li>
+                    <h3>4. Sikker lagring i MES</h3>
+                    <p>Når dataene er godkendt, skrives de direkte ned i jeres lokale database med fuldt Audit Trail og tidsstempel.</p>
+                </li>
+            </ul>
         </div>
     </section>
 
     <footer id="kontakt">
         <div class="content-wrapper">
             <h2>Vil du se, hvordan lokal AI kan fungere for jer?</h2>
-            <p>Lad os tage en snak om jeres ønsker og sammen finde en god løsning, hvor AI gør jeres arbejde nemmere.</p>
+            <p>Lad os tage en teknisk snak om hardwarekrav og muligheder for jeres dokumentation.</p>
             
             <div id="global-contact"></div>
         </div>
