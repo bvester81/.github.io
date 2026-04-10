@@ -37,7 +37,7 @@ const headerHTML = `
             </li>
             <li>
                 <div class="menu-item" id="downloadsToggle">
-                    Downloads <span class="arrow">▼</span>
+                    Branding <span class="arrow">▼</span>
                 </div>
                 <ul class="sub-menu" id="downloadsSub">
                     <li><a href="download_logo.html" class="nav-link">Logo konverter</a></li>
