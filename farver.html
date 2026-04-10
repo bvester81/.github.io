@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True Control | Designguide & Farver</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .color-table-container {
+            overflow-x: auto; /* Sikrer at tabellen kan scrolles sidelæns på små mobilskærme */
+            margin-top: 30px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .color-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .color-table th, .color-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .color-table th {
+            background-color: var(--navy-blue);
+            color: var(--text-light);
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .color-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .color-table tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .color-swatch {
+            width: 80px;
+            height: 40px;
+            border-radius: 6px;
+            border: 1px solid #d1d5db; /* Vigtig for at man kan se hvide/lyse farver */
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .code-text {
+            font-family: monospace;
+            background: #e2e8f0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: var(--navy-blue);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="content-wrapper">
+            <h1 style="color: var(--accent-blue); font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Designguide</h1>
+            <h1>True Control Farvepalette</h1>
+            <p>En oversigt over de officielle farver, der bruges på hjemmesiden og som standard i de SCADA- og MES-løsninger, der udvikles.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="content-wrapper">
+            <h2>Brand Colors</h2>
+            <p>Konsekvent brug af farver skaber genkendelighed og ro for operatørerne. Brug nedenstående koder ved opsætning af nye anlæg, HMI'er og dashboards.</p>
+            
+            <div class="color-table-container">
+                <table class="color-table">
+                    <thead>
+                        <tr>
+                            <th>Farve (Variabel)</th>
+                            <th>Visning</th>
+                            <th>HEX Kode</th>
+                            <th>RGB Kode</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Navy Blue</strong><br><span style="font-size: 0.85rem; color: #666;">--navy-blue</span></td>
+                            <td><div class="color-swatch" style="background-color: var(--navy-blue);"></div></td>
+                            <td><span class="code-text">#0f2027</span></td>
+                            <td><span class="code-text">rgb(15, 32, 39)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Accent Dark</strong><br><span style="font-size: 0.85rem; color: #666;">--accent-dark</span></td>
+                            <td><div class="color-swatch" style="background-color: var(--accent-dark);"></div></td>
+                            <td><span class="code-text">#205081</span></td>
+                            <td><span class="code-text">rgb(32, 80, 129)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Accent Blue</strong><br><span style="font-size: 0.85rem; color: #666;">--accent-blue</span></td>
+                            <td><div class="color-swatch" style="background-color: var(--accent-blue);"></div></td>
+                            <td><span class="code-text">#60a5fa</span></td>
+                            <td><span class="code-text">rgb(96, 165, 250)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Text Dark</strong><br><span style="font-size: 0.85rem; color: #666;">--text-dark</span></td>
+                            <td><div class="color-swatch" style="background-color: var(--text-dark);"></div></td>
+                            <td><span class="code-text">#333333</span></td>
+                            <td><span class="code-text">rgb(51, 51, 51)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Light BG (Baggrund)</strong><br><span style="font-size: 0.85rem; color: #666;">--light-bg</span></td>
+                            <td><div class="color-swatch" style="background-color: var(--light-bg);"></div></td>
+                            <td><span class="code-text">#f8f9fa</span></td>
+                            <td><span class="code-text">rgb(248, 249, 250)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Text Light (Hvid)</strong><br><span style="font-size: 0.85rem; color: #666;">--text-light</span></td>
+                            <td><div class="color-swatch" style="background-color: var(--text-light);"></div></td>
+                            <td><span class="code-text">#ffffff</span></td>
+                            <td><span class="code-text">rgb(255, 255, 255)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </section>
+
+    <footer id="kontakt">
+        <div class="content-wrapper">
+            <h2>Mangler du et system med et stærkt UX-design?</h2>
+            <p>Lad os bygge en brugerflade, som dine operatører rent faktisk forstår og har lyst til at bruge.</p>
+            
+            <div id="global-contact"></div>
+        </div>
+    </footer>
+
+    <script src="menu.js"></script>
+</body>
+</html>
