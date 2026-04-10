@@ -88,3 +88,21 @@ window.addEventListener('scroll', function() {
     }
     lastScrollTop = scrollTop;
 });
+
+
+// --- GLOBAL KONTAKTINFO LOGIK ---
+const contactHTML = `
+    <div class="contact-info">
+        <strong>Telefon:</strong> <a href="tel:+4500000000">+45 00 00 00 00</a><br>
+        <strong>Email:</strong> <a href="mailto:kontakt@truecontrol.dk">kontakt@truecontrol.dk</a><br>
+        <strong>LinkedIn:</strong> <a href="#" target="_blank">Min LinkedIn Profil</a>
+    </div>
+`;
+
+// Vi venter på at siden er indlæst, og indsætter så info i pladsholderen
+// Vi bruger en lille if-sætning, så koden ikke fejler, hvis en side mangler footeren
+const contactPlaceholder = document.getElementById('global-contact');
+if (contactPlaceholder) {
+    contactPlaceholder.innerHTML = contactHTML;
+}
+
