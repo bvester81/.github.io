@@ -65,47 +65,6 @@
 </head>
 <body>
 
-    <header>
-        <a href="index.html" style="text-decoration: none; display: flex; align-items: center;">
-            <img src="logo.svg" alt="True Control Logo" style="height: 60px;" onerror="this.style.display='none'">
-            <span class="header-slogan">True Control: Smart systems. Simple operations.</span>
-        </a>
-        
-        <div class="header-right">
-            <div class="lang-switch">
-                <a href="index.html" class="lang-dk">DK</a>
-                <span class="lang-divider">|</span>
-                <a href="index_en.html" class="lang-en">EN</a>
-            </div>
-            
-            <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
-
-
-    <nav class="side-menu" id="sideMenu">
-        <ul class="menu-list">
-            <li>
-                <div class="menu-item" id="expertiseToggle">
-                    Ekspertiser <span class="arrow">▼</span>
-                </div>
-                <ul class="sub-menu" id="expertiseSub">
-                    <li><a href="lokal-ai.html" class="nav-link">AI review af håndskrift</a></li>
-                </ul>
-            </li>
-            <li><a href="#om-true-control" class="menu-item nav-link">Om True Control</a></li>
-            <li><a href="#ydelser" class="menu-item nav-link">Mine Ydelser</a></li>
-            <li><a href="#metode" class="menu-item nav-link">Sådan arbejder jeg</a></li>
-            <li><a href="#kontakt" class="menu-item nav-link">Kontakt</a></li>
-        </ul>
-    </nav>
-    
-    <div class="overlay" id="overlay"></div>
-
     <section class="hero">
         <div class="content-wrapper">
             <h1>Få maskinerne og ledelsen til at tale samme sprog</h1>
@@ -130,7 +89,6 @@
             <p>Jeg har i en årrække arbejdet med udvikling til pharma-industrien, hvilket i dag gennemsyrer måden, True Control bygger software på. Det betyder, at kompromisløs kvalitet, sporbarhed og stabil oppetid er en integreret del af koden. True Control er bygget til at udvikle i miljøer, hvor fejl ikke er en mulighed, og hvor softwaren skal kunne valideres (GAMP) fra dag ét.</p>
         </div>
     </section>
-
 
     <section id="ydelser" class="bg-light">
         <div class="content-wrapper">
@@ -217,62 +175,6 @@
         </div>
     </footer>
 
-    <script>
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const sideMenu = document.getElementById('sideMenu');
-        const overlay = document.getElementById('overlay');
-        const expertiseToggle = document.getElementById('expertiseToggle');
-        const expertiseSub = document.getElementById('expertiseSub');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        // Funktion til at åbne/lukke selve sidemenuen
-        function toggleMenu() {
-            hamburgerBtn.classList.toggle('active');
-            sideMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-
-        hamburgerBtn.addEventListener('click', toggleMenu);
-        overlay.addEventListener('click', toggleMenu);
-
-        // Luk menuen når der klikkes på et almindeligt link
-        navLinks.forEach(link => {
-            link.addEventListener('click', toggleMenu);
-        });
-
-        // Håndtering af drop-down (Ekspertiser) i menuen
-        expertiseToggle.addEventListener('click', function() {
-            this.classList.toggle('open');
-            
-            // Tjekker om undermenuen er åben via maxHeight
-            if (expertiseSub.style.maxHeight) {
-                expertiseSub.style.maxHeight = null; // Lukker den
-                this.querySelector('.arrow').style.transform = 'rotate(0deg)';
-            } else {
-                expertiseSub.style.maxHeight = expertiseSub.scrollHeight + "px"; // Åbner den baseret på indholdets højde
-                this.querySelector('.arrow').style.transform = 'rotate(180deg)';
-                this.querySelector('.arrow').style.transition = '0.3s';
-            }
-        });
-
-        // --- KODE TIL AT GEMME/VISE HEADER PÅ SCROLL ---
-        let lastScrollTop = 0;
-        const mainHeader = document.querySelector('header');
-
-        window.addEventListener('scroll', function() {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-            // Skjuler headeren hvis vi scroller ned og er mere end 100px fra toppen
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                mainHeader.classList.add('hidden');
-            } 
-            // Viser headeren igen hvis vi scroller op
-            else {
-                mainHeader.classList.remove('hidden');
-            }
-            
-            lastScrollTop = scrollTop;
-        });
-    </script>
+    <script src="menu.js"></script>
 </body>
 </html>
