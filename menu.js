@@ -5,7 +5,7 @@ const headerHTML = `
     <header>
         <a href="index.html" style="text-decoration: none; display: flex; align-items: center;">
             <img src="logo.svg" alt="True Control Logo" style="height: 60px;" onerror="this.style.display='none'">
-            <span class="header-slogan">True Control: Smart systems. Simple operations.</span>
+            <span class="header-slogan">True Control: Simply in control.</span>
         </a>
         
         <div class="header-right">
@@ -33,6 +33,7 @@ const headerHTML = `
                 </div>
                 <ul class="sub-menu" id="expertiseSub">
                     <li><a href="lokal-ai.html" class="nav-link">AI review af håndskrift</a></li>
+                    <li><a href="aveva_operations.html" class="nav-link">AVEVA Operations</a></li>
                 </ul>
             </li>
             <li>
@@ -71,8 +72,8 @@ function toggleMenu() {
     overlay.classList.toggle('active');
 }
 
-hamburgerBtn.addEventListener('click', toggleMenu);
-overlay.addEventListener('click', toggleMenu);
+if (hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMenu);
+if (overlay) overlay.addEventListener('click', toggleMenu);
 
 navLinks.forEach(link => {
     link.addEventListener('click', toggleMenu);
@@ -82,33 +83,37 @@ navLinks.forEach(link => {
 const expertiseToggle = document.getElementById('expertiseToggle');
 const expertiseSub = document.getElementById('expertiseSub');
 
-expertiseToggle.addEventListener('click', function() {
-    this.classList.toggle('open');
-    if (expertiseSub.style.maxHeight) {
-        expertiseSub.style.maxHeight = null;
-        this.querySelector('.arrow').style.transform = 'rotate(0deg)';
-    } else {
-        expertiseSub.style.maxHeight = expertiseSub.scrollHeight + "px";
-        this.querySelector('.arrow').style.transform = 'rotate(180deg)';
-        this.querySelector('.arrow').style.transition = '0.3s';
-    }
-});
+if (expertiseToggle) {
+    expertiseToggle.addEventListener('click', function() {
+        this.classList.toggle('open');
+        if (expertiseSub.style.maxHeight) {
+            expertiseSub.style.maxHeight = null;
+            this.querySelector('.arrow').style.transform = 'rotate(0deg)';
+        } else {
+            expertiseSub.style.maxHeight = expertiseSub.scrollHeight + "px";
+            this.querySelector('.arrow').style.transform = 'rotate(180deg)';
+            this.querySelector('.arrow').style.transition = '0.3s';
+        }
+    });
+}
 
 // Dropdown for "Downloads"
 const downloadsToggle = document.getElementById('downloadsToggle');
 const downloadsSub = document.getElementById('downloadsSub');
 
-downloadsToggle.addEventListener('click', function() {
-    this.classList.toggle('open');
-    if (downloadsSub.style.maxHeight) {
-        downloadsSub.style.maxHeight = null;
-        this.querySelector('.arrow').style.transform = 'rotate(0deg)';
-    } else {
-        downloadsSub.style.maxHeight = downloadsSub.scrollHeight + "px";
-        this.querySelector('.arrow').style.transform = 'rotate(180deg)';
-        this.querySelector('.arrow').style.transition = '0.3s';
-    }
-});
+if (downloadsToggle) {
+    downloadsToggle.addEventListener('click', function() {
+        this.classList.toggle('open');
+        if (downloadsSub.style.maxHeight) {
+            downloadsSub.style.maxHeight = null;
+            this.querySelector('.arrow').style.transform = 'rotate(0deg)';
+        } else {
+            downloadsSub.style.maxHeight = downloadsSub.scrollHeight + "px";
+            this.querySelector('.arrow').style.transform = 'rotate(180deg)';
+            this.querySelector('.arrow').style.transition = '0.3s';
+        }
+    });
+}
 
 // Skjul header ved scroll ned, vis ved scroll op
 let lastScrollTop = 0;
