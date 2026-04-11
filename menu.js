@@ -26,6 +26,8 @@ const headerHTML = `
     <nav class="side-menu" id="sideMenu">
         <ul class="menu-list">
             <li><a href="index.html" class="menu-item nav-link">Gå til Forsiden</a></li>
+            <li><a href="index.html#om-true-control" class="menu-item nav-link">Om True Control</a></li>
+            <li><a href="index.html#metode" class="menu-item nav-link">Projektmodel</a></li>
             
             <li>
                 <div class="menu-item" id="expertiseToggle">
@@ -36,10 +38,10 @@ const headerHTML = `
                     <li><a href="aveva_mes.html" class="nav-link">AVEVA MES</a></li>
                     <li><a href="oee_solutions.html" class="nav-link">OEE & Maskinintegration</a></li>
                     <li><a href="diverse_kompetencer.html" class="nav-link">Øvrige Kompetencer</a></li>
-                    <li><a href="lokal-ai.html" class="nav-link">AI review af håndskrift</a></li>
+                    <li><a href="lokal-ai.html" class="nav-link">Edge AI & LLM</a></li>
                 </ul>
-
             </li>
+            
             <li>
                 <div class="menu-item" id="downloadsToggle">
                     Branding <span class="arrow">▼</span>
@@ -50,7 +52,7 @@ const headerHTML = `
                 </ul>
             </li>
 
-            <li><a href="index.html#kontakt" class="menu-item nav-link">Kontakt</a></li>
+            <li><a href="#kontakt" class="menu-item nav-link">Kontakt</a></li>
         </ul>
     </nav>
     
