@@ -50,12 +50,25 @@
             .step-card { width: 90%; margin-bottom: 20px; }
             .step-card.highlight { transform: scale(1); }
         }
+        
+        /* Ekstra style for ekspertisekasserne */
+        .expertise-card {
+            cursor: pointer; 
+            transition: transform 0.2s ease, box-shadow 0.2s ease; 
+            border-bottom: 4px solid var(--accent-blue);
+        }
+        .expertise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-bottom: 4px solid var(--accent-dark);
+        }
     </style>
 </head>
 <body>
 
     <section class="hero">
         <div class="content-wrapper">
+            <h1 style="color: var(--accent-blue); font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">True Control: Simply in control</h1>
             <h1>Få maskinerne og ledelsen til at tale samme sprog</h1>
             <p>Sikker og smidig SCADA- og MES-programmering fra en software-specialist, der forstår hardwarens præmisser. Få en uafhængig arkitekt, der bygger digitale løsninger til den fysiske virkelighed.</p>
             <a href="#kontakt" class="btn">Book en uforpligtende snak</a>
@@ -81,30 +94,50 @@
 
     <section id="ydelser" class="bg-light">
         <div class="content-wrapper">
-            <h2>Mine Ydelser</h2>
-            <p>Fra rå maskindata til forretningsværdi. Som uafhængig software-specialist hjælper jeg med følgende kerneområder:</p>
+            <h2 style="text-align: center; margin-bottom: 40px;">Mine Ekspertiser & Kerneydelser</h2>
             
             <div class="services-grid">
-                <div class="service-card">
-                    <h3>AVEVA SCADA & MES</h3>
-                    <p>Jeg designer og koder robuste AVEVA-løsninger. Fra de bagvedliggende databaser, scripts og arkitekturvalg til de brugervenlige HMI-skærme. Jeg bygger software, der performer stabilt, og som er nemt at vedligeholde og udvide.</p>
-                </div>
-                <div class="service-card">
-                    <h3>OEE & Dataintegration</h3>
-                    <p>Jeg udvikler den software, der trækker og behandler de rigtige data fra jeres PLC'er (uanset mærke) og omsætter dem til intelligente OEE-dashboards. Ledelsen får de faktuelle data præsenteret skarpt og fejlfrit.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Standardisering med PackML</h3>
-                    <p>Jeg koder og implementerer ISA-88 / PackML-standarden i jeres overordnede systemer. Det sikrer ensartede datastrukturer i jeres software, uanset hvem der har leveret den fysiske maskine.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Pharma-standard & GAMP-validering</h3>
-                    <p>Jeg leverer kode, der er forberedt til GAMP-validering fra dag ét. Det inkluderer opsætning af audit trails, versionering, datasikkerhed og den nødvendige strukturelle dokumentation.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Systemarkitektur & Foranalyse</h3>
-                    <p>Inden I starter et stort udviklingsprojekt, kan jeg lave en systemanalyse. Jeg afdækker de tekniske faldgruber fra PLC-laget og op til databasen og ERP-systemet, og leverer en klar kravspecifikation, der minimerer jeres risiko i kodningsfasen.</p>
-                </div>
+                
+                <a href="aveva_operations.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card expertise-card">
+                        <h3 style="color: var(--accent-dark);">AVEVA Operations</h3>
+                        <p>System Platform, OMI og InTouch. Skalerbare løsninger bygget på solide templates og best practice.</p>
+                        <span style="color: var(--accent-blue); font-weight: bold; margin-top: auto; display: inline-block;">Læs mere →</span>
+                    </div>
+                </a>
+
+                <a href="aveva_mes.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card expertise-card">
+                        <h3 style="color: var(--accent-dark);">AVEVA MES</h3>
+                        <p>Styring af produktionsflow, BOM og entities. Få fuld sporbarhed og kontrol over jeres produktion.</p>
+                        <span style="color: var(--accent-blue); font-weight: bold; margin-top: auto; display: inline-block;">Læs mere →</span>
+                    </div>
+                </a>
+
+                <a href="oee_solutions.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card expertise-card">
+                        <h3 style="color: var(--accent-dark);">OEE & Maskinintegration</h3>
+                        <p>Dataopsamling og leverandørstyring. Erfaring med +100 maskiner og 25+ forskellige leverandører.</p>
+                        <span style="color: var(--accent-blue); font-weight: bold; margin-top: auto; display: inline-block;">Læs mere →</span>
+                    </div>
+                </a>
+
+                <a href="diverse_kompetencer.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card expertise-card">
+                        <h3 style="color: var(--accent-dark);">Specialløsninger</h3>
+                        <p>Octoplant, Win-911, Label-integration og Ignition SCADA. Værktøjer der sikrer jeres drift.</p>
+                        <span style="color: var(--accent-blue); font-weight: bold; margin-top: auto; display: inline-block;">Læs mere →</span>
+                    </div>
+                </a>
+
+                <a href="lokal-ai.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card expertise-card">
+                        <h3 style="color: var(--accent-dark);">Edge AI & LLM</h3>
+                        <p>Automatiseret review af håndskrevne rapporter. 100% lokal AI-håndtering uden cloud-risici.</p>
+                        <span style="color: var(--accent-blue); font-weight: bold; margin-top: auto; display: inline-block;">Læs mere →</span>
+                    </div>
+                </a>
+
             </div>
         </div>
     </section>
